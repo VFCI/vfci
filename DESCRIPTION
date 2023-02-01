@@ -8,11 +8,9 @@ Authors@R: c(
            comment = c(ORCID = "0000-0002-8495-6936")),
     person("Tara", "Iyer", , "taraiyer8@gmail.com", role = c("aut", "cre"))
   )
-Description: Reproduce tables and figures in the paper
-    Adrian, T, F Duarte and T Iyer (2023), 
+Description: R package to reproduce tables and figures in Adrian, Duarte and Iyer (2023), 
     “The Market Price of Risk and Macro-Financial Dynamics”, 
-    CEPR Press Discussion Paper No. 17777.
-    https://cepr.org/publications/dp17777
+    [CEPR Press Discussion Paper No. 17777](https://cepr.org/publications/dp17777).
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
