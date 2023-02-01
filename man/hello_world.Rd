@@ -2,7 +2,7 @@
 % Please edit documentation in R/make_me_tidy.R
 \name{hello_world}
 \alias{hello_world}
-\title{Prints "Hello World"}
+\title{Prints "Hello World" to see if github actions work}
 \usage{
 hello_world()
 }
@@ -10,7 +10,7 @@ hello_world()
 Nothing
 }
 \description{
-Prints "Hello World"
+Prints "Hello World" to see if github actions work
 }
 \examples{
 hello_world()
