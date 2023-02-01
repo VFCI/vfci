@@ -10,8 +10,8 @@
 
 The R package vfci reproduces tables and figures in Adrian, Duarte and
 Iyer (2023), “The Market Price of Risk and Macro-Financial Dynamics”,
-<a href="https://cepr.org/publications/dp17777" target="_blank">CEPR
-Press Discussion Paper No. 17777</a>.
+<a href="https://cepr.org/publications/dp17777" target="_blank" rel="noopener">CEPR
+Press Discussion Paper No. 17777 </a>.
 
 ## Installation
 
