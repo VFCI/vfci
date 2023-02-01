@@ -4,6 +4,8 @@
 # vfci
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/vfci/vfci/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/vfci/vfci/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The R package vfci reproduces tables and figures in Adrian, Duarte and
