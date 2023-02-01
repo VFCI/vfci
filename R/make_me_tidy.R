@@ -1,4 +1,4 @@
-#' Prints "Hello World"
+#' Prints "Hello World" to see if github actions work
 #'
 #' @return Nothing
 #' @export
