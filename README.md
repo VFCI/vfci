@@ -4,22 +4,14 @@
 # vfci
 
 <!-- badges: start -->
-<<<<<<< HEAD
 
 [![R-CMD-check](https://github.com/vfci/vfci/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/vfci/vfci/actions/workflows/R-CMD-check.yaml)
-=======
->>>>>>> 505e08d (Add documentation. Add README.)
 <!-- badges: end -->
 
 The R package vfci reproduces tables and figures in Adrian, Duarte and
 Iyer (2023), “The Market Price of Risk and Macro-Financial Dynamics”,
-<<<<<<< HEAD
-<a href="https://cepr.org/publications/dp17777" target="_blank">CEPR
-Press Discussion Paper No. 17777</a>.
-=======
 [CEPR Press Discussion Paper
 No. 17777](https://cepr.org/publications/dp17777).
->>>>>>> 505e08d (Add documentation. Add README.)
 
 ## Installation
 
