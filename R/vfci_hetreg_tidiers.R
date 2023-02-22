@@ -50,15 +50,18 @@ augment.het <- function(x, ...) {
 
 #' @importFrom generics tidy
 #' @export
+#' @inherit generics::tidy title return
 #' @seealso [`broom.mixed::tidy.gls()`](https://github.com/bbolker/broom.mixed)
 generics::tidy
 
 #' @importFrom generics glance
 #' @export
+#' @inherit generics::glance title return
 #' @seealso [`broom.mixed::glance.gls()`](https://github.com/bbolker/broom.mixed)
 generics::glance
 
 #' @importFrom generics augment
 #' @export
+#' @inherit generics::augment title return
 #' @seealso [`broom.mixed::augment.gls()`](https://github.com/bbolker/broom.mixed)
 generics::augment
