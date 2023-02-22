@@ -4,3 +4,5 @@
 ^README\.Rmd$
 ^\.github$
 ^\V-FCI-Overleaf$
+^data-raw$
+^man-roxygen$

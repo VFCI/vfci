@@ -18,8 +18,15 @@ RoxygenNote: 7.2.3
 URL: https://github.com/VFCI/vfci
 BugReports: https://github.com/VFCI/vfci/issues
 Imports:
-    tidyquant
+    stats,
+    tidyquant,
+    generics,
+    magrittr,
+    dplyr,
+    glue,
+    nlme,
+    purrr,
+    stringr,
+    broom.mixed
 Suggests:
     alfred
-
-    
