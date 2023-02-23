@@ -11,12 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
         with:
           ref: ${{ github.event.client_payload.sha }}
-          fetch-depth: 0
 
       - name: Setup R
         uses: r-lib/actions/setup-r@v2
