@@ -1,8 +1,8 @@
 # Workflow derived from https://github.com/r-lib/actions/tree/v2/examples
 # Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 on:
-  push:
-    paths: ["**.[rR]", "**.[qrR]md", "**.[rR]markdown", "**.[rR]nw"]
+  repository_dispatch:
+    types: [trigger-workflow-style]
 
 name: Style
 
@@ -15,6 +15,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
         with:
+          ref: ${{ github.event.client_payload.sha }}
           fetch-depth: 0
 
       - name: Setup R
