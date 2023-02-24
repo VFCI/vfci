@@ -1,5 +1,3 @@
-# Workflow derived from https://github.com/r-lib/actions/tree/v2/examples
-# Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 on:
   push:
     branches: [main, develop]
@@ -49,7 +47,7 @@ jobs:
           upload-snapshots: true
 
       - name: Trigger next workflow
-        if: matrix.syle-here == 'yes' && success()
+        if: ${{ matrix.config.syle-here == 'yes' && success() }}
         uses: peter-evans/repository-dispatch@v2
         with:
           token: ${{ secrets.REPO_GHA_PAT }}
