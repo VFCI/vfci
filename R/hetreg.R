@@ -42,14 +42,14 @@
 #' @return an object of class `gls` representing the linear model fit. See [`gls()`][nlme::gls()] for details.
 #'
 #' @export
-hetreg <- function(data,y,x,het=x, ..., gls_opt = NULL) {
+hetreg <- function(data, y, x, het = x, ..., gls_opt = NULL) {
   Call <- match.call()
-  mean_eq <- paste(y,"~",paste(x, collapse='+'))
-  weights <- eval(parse(text=glue::glue(
+  mean_eq <- paste(y, "~", paste(x, collapse = "+"))
+  weights <- eval(parse(text = glue::glue(
     "nlme::varComb( \n",
     glue::glue_collapse(glue::glue("nlme::varExp(form = ~ {het})"), ",\n"),
     ")"
   )))
   frm <- stats::formula(paste(mean_eq, collapse = " "))
-  h <- nlme::gls(frm,data=data, weights=weights, gls_opt)
+  h <- nlme::gls(frm, data = data, weights = weights, gls_opt)
 }

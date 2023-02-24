@@ -15,16 +15,20 @@
 #' @describeIn tidy.het returns the same information as `nlme_tidiers()` from [`broom.mixed`](https://github.com/bbolker/broom.mixed)
 #' for the mean equation, and adds coefficients, standard errors, t-statistics and p-values for the variance equation
 tidy.het <- function(x, conf.int = FALSE, conf.level = 0.95, ...) {
-  get_attr <- \(x) attr(x,"formula")
-  idx <- list("modelStruct","varStruct", \(x) purrr::map(x,get_attr))
-  vareq_names <- purrr::pluck(x,!!!idx) %>% unname %>% purrr::map(deparse1) %>% stringr::str_remove_all("~") %>% stringr::str_split(" ")
-  vareq_coef <- 2 * attr(x$apVar, "Pars") %>% unname
-  estimate<-std.error<-statistic<-NULL
+  get_attr <- \(x) attr(x, "formula")
+  idx <- list("modelStruct", "varStruct", \(x) purrr::map(x, get_attr))
+  vareq_names <- purrr::pluck(x, !!!idx) %>%
+    unname() %>%
+    purrr::map(deparse1) %>%
+    stringr::str_remove_all("~") %>%
+    stringr::str_split(" ")
+  vareq_coef <- 2 * attr(x$apVar, "Pars") %>% unname()
+  estimate <- std.error <- statistic <- NULL
   result <- dplyr::tibble(
-    term = c(vareq_names,"(Intercept)") %>% unlist,
+    term = c(vareq_names, "(Intercept)") %>% unlist(),
     estimate = vareq_coef, # \alpha coefficients of vol eq
-    std.error = 2 * sqrt(diag(x$apVar)) %>% unname, # std.error of \alpha
-    statistic = estimate/std.error,
+    std.error = 2 * sqrt(diag(x$apVar)) %>% unname(), # std.error of \alpha
+    statistic = estimate / std.error,
     p.value = 2 * stats::pnorm(-abs(statistic))
   )
   if (conf.int) {

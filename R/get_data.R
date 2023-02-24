@@ -26,7 +26,6 @@ get_data <- function(
     observation_end = "2023-01-01",
     realtime_start = NULL,
     realtime_end = NULL) {
-
   fred_raw <- tidyquant::tq_get(
     fred_series,
     get = "economic.data",
@@ -42,5 +41,4 @@ get_data <- function(
   )
 
   list("fred" = fred_raw, "yahoo" = yahoo_raw)
-
 }
