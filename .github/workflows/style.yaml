@@ -65,3 +65,12 @@ jobs:
           git commit -m "Style code" || echo "No changes to commit"
           git pull --ff-only
           git push origin
+
+      - name: Trigger next workflow
+        if: ${{ success() }}
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.REPO_GHA_PAT }}
+          repository: ${{ github.repository }}
+          event-type: trigger-workflow-document
+          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'

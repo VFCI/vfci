@@ -1,6 +1,10 @@
 on:
-  push:
-    paths: ["R/**"]
+  repository_dispatch:
+    types: [trigger-workflow-document]
+
+# on:
+#   push:
+#     paths: ["R/**"]
 
 name: Document
 
