@@ -19,7 +19,7 @@ jobs:
         id: changed-R-files
         uses: tj-actions/changed-files@v35
         with:
-          files: R/*.{R} 
+          files: R/*.R
 
       - name: If any .R file(s) in the R folder changed then update documentation and commit
         if: steps.changed-R-files.outputs.any_changed == 'true'      

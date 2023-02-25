@@ -16,12 +16,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        config:          
-          - {os: ubuntu-latest,  r: 'devel',    syle-here: 'no', http-user-agent: 'release'}
-          - {os: ubuntu-latest,  r: 'release',  syle-here: 'yes'}
-          - {os: ubuntu-latest,  r: 'oldrel-1', syle-here: 'no'}
+        config:
           - {os: macos-latest,   r: 'release',  syle-here: 'no'}
           - {os: windows-latest, r: 'release',  syle-here: 'no'}
+          - {os: ubuntu-latest,  r: 'devel',    syle-here: 'no', http-user-agent: 'release'}
+          - {os: ubuntu-latest,  r: 'oldrel-1', syle-here: 'no'}
+          - {os: ubuntu-latest,  r: 'release',  syle-here: 'yes'}
     
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
