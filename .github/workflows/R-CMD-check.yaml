@@ -1,5 +1,9 @@
 on:
   push:
+    paths-ignore:
+      - README.md
+      - LICENSE.md
+      - 'man/**'
     branches: [main, develop]
   pull_request:
     branches: [main, develop]

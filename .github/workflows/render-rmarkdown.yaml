@@ -26,7 +26,6 @@ jobs:
         uses: ./.github/workflows/render-rmarkdown
 
       - name: Trigger next workflow
-        if: success()
         uses: peter-evans/repository-dispatch@v2
         with:
           token: ${{ secrets.REPO_GHA_PAT }}
