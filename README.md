@@ -20,7 +20,7 @@ You can install the development version of vfci from
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("fernando-duarte/vfci")
+devtools::install_github("VFCI/vfci")
 ```
 
 <!-- ## Example -->

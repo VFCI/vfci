@@ -1,10 +1,8 @@
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+  repository_dispatch:
+    types: [trigger-workflow-lint]
 
-name: lint
+name: Lint
 
 jobs:
   lint:
