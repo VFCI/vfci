@@ -1,0 +1,12 @@
+services:
+  rstudio:
+    image: rocker/tidyverse:4
+    ports:
+      - "8787:8787"
+    environment:
+      PASSWORD: vfci
+      DISABLE_AUTH: true
+    volumes:
+      - ./.rstudio_config:/home/rstudio/.config/rstudio
+      - ~/workspace:/home/rstudio/workspace
+      - /workspaces/macro_dynamics:/home/rstudio/macro_dynamics
