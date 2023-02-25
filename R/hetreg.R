@@ -52,4 +52,6 @@ hetreg <- function(data, y, x, het = x, ..., gls_opt = NULL) {
   )))
   frm <- stats::formula(paste(mean_eq, collapse = " "))
   h <- nlme::gls(frm, data = data, weights = weights, gls_opt)
+  h$call$hetreg <- Call
+  return(h)
 }
