@@ -7,7 +7,7 @@
 \alias{augment.het}
 \title{Tidying methods for heteroskedastic linear regressions}
 \usage{
-\method{tidy}{het}(x, conf.int = FALSE, conf.level = 0.95, ...)
+\method{tidy}{het}(x, conf_int = FALSE, conf_level = 0.95, ...)
 
 \method{glance}{het}(x, ...)
 
@@ -16,11 +16,11 @@
 \arguments{
 \item{x}{An object of class \code{het} created by \code{\link[=hetreg]{hetreg()}}.}
 
-\item{conf.int}{Logical indicating whether or not to include a confidence
+\item{conf_int}{Logical indicating whether or not to include a confidence
 interval in the tidied output. Defaults to \code{FALSE}.}
 
-\item{conf.level}{The confidence level to use for the confidence interval
-if \code{conf.int = TRUE}. Must be strictly greater than 0 and less than 1.
+\item{conf_level}{The confidence level to use for the confidence interval
+if \code{conf_int = TRUE}. Must be strictly greater than 0 and less than 1.
 Defaults to 0.95, which corresponds to a 95 percent confidence interval.}
 
 \item{...}{Additional arguments. Not used. Needed to match generic
@@ -39,14 +39,18 @@ that are compatible with \link[broom:broom]{broom}.
 }
 \section{Functions}{
 \itemize{
-\item \code{tidy(het)}: returns the same information as \code{nlme_tidiers()} from \href{https://github.com/bbolker/broom.mixed}{\code{broom.mixed}}
-for the mean equation, and adds coefficients, standard errors, t-statistics and p-values for the variance equation
+\item \code{tidy(het)}: returns the same information as \code{nlme_tidiers()} from
+\href{https://github.com/bbolker/broom.mixed}{\code{broom.mixed}}
+for the mean equation, and adds coefficients, standard errors, t-statistics
+and p-values for the variance equation
 
-\item \code{glance(het)}: same as \href{https://github.com/bbolker/broom.mixed}{\code{broom.mixed::glance.gls()}}
+\item \code{glance(het)}: same as
+\href{https://github.com/bbolker/broom.mixed}{\code{broom.mixed::glance.gls()}}
 
 \item \code{augment(het)}: returns the standard deviation of the error term
 
 }}
 \seealso{
-\code{\link[broom:reexports]{broom::tidy()}}, \code{nlme_tidiers()} from \href{https://github.com/bbolker/broom.mixed}{\code{broom.mixed}}
+\code{\link[broom:reexports]{broom::tidy()}}, \code{nlme_tidiers()} from
+\href{https://github.com/bbolker/broom.mixed}{\code{broom.mixed}}
 }
