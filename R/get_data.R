@@ -1,3 +1,4 @@
+#' @export
 get_data <- function(
     fred_series = c(
       "GDPC1",
