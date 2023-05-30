@@ -9,4 +9,4 @@ services:
     volumes:
       - ./.rstudio_config:/home/rstudio/.config/rstudio
       - ~/workspace:/home/rstudio/workspace
-      - /workspaces/macro_dynamics:/home/rstudio/macro_dynamics
+      - /workspaces/vfci:/home/rstudio/vfci
