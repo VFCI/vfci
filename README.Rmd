@@ -32,6 +32,8 @@ You can install the development version of vfci from [GitHub](https://github.com
 devtools::install_github("VFCI/vfci")
 ```
 
+Temporary Edit
+
 <!-- ## Example -->
 
 <!-- This is a basic example which shows you how to solve a common problem: -->
