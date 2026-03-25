@@ -20,17 +20,17 @@
 tidy.het <- function(x, conf_int = FALSE, conf_level = 0.95, ...) {
   get_attr <- \(x) attr(x, "formula")
   idx <- list("modelStruct", "varStruct", \(x) purrr::map(x, get_attr))
-  vareq_names <- purrr::pluck(x, !!!idx) %>%
-    unname() %>%
-    purrr::map(deparse1) %>%
-    stringr::str_remove_all("~") %>%
+  vareq_names <- purrr::pluck(x, !!!idx) |>
+    unname() |>
+    purrr::map(deparse1) |>
+    stringr::str_remove_all("~") |>
     stringr::str_split(" ")
-  vareq_coef <- 2 * attr(x$apVar, "Pars") %>% unname()
+  vareq_coef <- 2 * attr(x$apVar, "Pars") |> unname()
   estimate <- std_error <- statistic <- NULL
   result <- dplyr::tibble(
-    term = c(vareq_names, "(Intercept)") %>% unlist(),
+    term = c(vareq_names, "(Intercept)") |> unlist(),
     estimate = vareq_coef, # \alpha coefficients of vol eq
-    std_error = 2 * sqrt(diag(x$apVar)) %>% unname(), # std_error of \alpha
+    std_error = 2 * sqrt(diag(x$apVar)) |> unname(), # std_error of \alpha
     statistic = estimate / std_error,
     p.value = 2 * stats::pnorm(-abs(statistic))
   )
