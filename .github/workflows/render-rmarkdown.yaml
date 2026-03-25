@@ -4,6 +4,9 @@ on:
 
 name: Render-R-markdown
 
+permissions:
+  contents: write
+
 jobs:
   render-rmarkdown:
     runs-on: ubuntu-latest
@@ -11,9 +14,10 @@ jobs:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ github.event.client_payload.ref }}
 
       - name: Get changed .Rmd file(s)
         id: changed-Rmd-files
@@ -24,11 +28,13 @@ jobs:
       - name: If any .Rmd file(s) changed then render R markdown file(s) and commit
         if: steps.changed-Rmd-files.outputs.any_changed == 'true'      
         uses: ./.github/workflows/render-rmarkdown
+        with:
+          rmd-files: ${{ steps.changed-Rmd-files.outputs.all_changed_files }}
 
       - name: Trigger next workflow
         uses: peter-evans/repository-dispatch@v2
         with:
-          token: ${{ secrets.REPO_GHA_PAT }}
+          token: ${{ github.token }}
           repository: ${{ github.repository }}
           event-type: trigger-workflow-lint
-          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+          client-payload: '{"ref": "${{ github.event.client_payload.ref }}"}'

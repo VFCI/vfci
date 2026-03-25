@@ -11,6 +11,9 @@ on:
 
 name: R-CMD-check
 
+permissions:
+  contents: write
+
 jobs:
   R-CMD-check:
     runs-on: ${{ matrix.config.os }}
@@ -32,7 +35,7 @@ jobs:
       R_KEEP_PKG_SOURCE: yes
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - uses: r-lib/actions/setup-pandoc@v2
 
@@ -52,10 +55,10 @@ jobs:
           upload-snapshots: true
 
       - name: Trigger next workflow
-        if: ${{ matrix.config.syle-here == 'yes' && success() }}
+        if: ${{ github.event_name == 'push' && matrix.config.syle-here == 'yes' && success() }}
         uses: peter-evans/repository-dispatch@v2
         with:
-          token: ${{ secrets.REPO_GHA_PAT }}
+          token: ${{ github.token }}
           repository: ${{ github.repository }}
           event-type: trigger-workflow-style
-          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+          client-payload: '{"ref": "${{ github.ref }}"}'

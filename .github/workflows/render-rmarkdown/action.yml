@@ -1,6 +1,11 @@
 name: 'Render-R-markdown'
 description: 'Render R markdown file(s)'
 
+inputs:
+  rmd-files:
+    description: 'Space-separated list of changed Rmd files'
+    required: true
+
 runs:
   using: "composite"
   steps:
@@ -10,10 +15,17 @@ runs:
 
     - name: Render R markdown file(s) and commit results
       run: |
-        RMD_PATH=($(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '[.]Rmd$'))
-        Rscript -e 'for (f in commandArgs(TRUE)) if (file.exists(f)) rmarkdown::render(f)' ${RMD_PATH[*]}
+        read -r -a RMD_PATH <<< "${{ inputs.rmd-files }}"
+        if [ "${#RMD_PATH[@]}" -eq 0 ]; then
+          echo "No changed R Markdown files to render"
+          exit 0
+        fi
+
+        Rscript -e 'for (f in commandArgs(TRUE)) if (file.exists(f)) rmarkdown::render(f)' "${RMD_PATH[@]}"
+        MD_PATH=("${RMD_PATH[@]/%.Rmd/.md}")
         git config --local user.name "$GITHUB_ACTOR"
         git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
-        git commit ${RMD_PATH[*]/.Rmd/.md} -m 'Re-build Rmarkdown files' || echo "No changes to commit"
+        git add "${MD_PATH[@]}"
+        git commit -m 'Re-build Rmarkdown files' || echo "No changes to commit"
         git push origin || echo "No changes to commit"
       shell: bash
