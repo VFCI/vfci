@@ -21,7 +21,7 @@ jobs:
 
       - name: Get changed .R file(s) in the R folder
         id: changed-R-files
-        uses: tj-actions/changed-files@v41
+        uses: tj-actions/changed-files@v46
         with:
           files: R/*.R
 
