@@ -4,6 +4,9 @@ on:
 
 name: Style
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 permissions:
   contents: write
 
@@ -15,7 +18,7 @@ jobs:
       
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           ref: ${{ github.event.client_payload.ref }}
@@ -49,7 +52,7 @@ jobs:
         shell: Rscript {0}
 
       - name: Cache styler
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ${{ steps.styler-location.outputs.location }}
           key: ${{ runner.os }}-styler-${{ github.sha }}
@@ -72,7 +75,7 @@ jobs:
 
       - name: Trigger next workflow
         if: ${{ success() }}
-        uses: peter-evans/repository-dispatch@v2
+        uses: peter-evans/repository-dispatch@v4
         with:
           token: ${{ github.token }}
           repository: ${{ github.repository }}

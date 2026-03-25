@@ -4,6 +4,9 @@ on:
 
 name: Document
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 permissions:
   contents: write
 
@@ -14,14 +17,14 @@ jobs:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           ref: ${{ github.event.client_payload.ref }}
 
       - name: Get changed .R file(s) in the R folder
         id: changed-R-files
-        uses: tj-actions/changed-files@v41
+        uses: tj-actions/changed-files@v47
         with:
           files: R/*.R
 
@@ -30,7 +33,7 @@ jobs:
         uses: ./.github/workflows/document
 
       - name: Trigger next workflow
-        uses: peter-evans/repository-dispatch@v2
+        uses: peter-evans/repository-dispatch@v4
         with:
           token: ${{ github.token }}
           repository: ${{ github.repository }}
