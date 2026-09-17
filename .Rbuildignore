@@ -6,3 +6,5 @@
 ^\V-FCI-Overleaf$
 ^data-raw$
 ^man-roxygen$
+^VFCI-Dec2022$
+^vfcidata$
